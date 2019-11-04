@@ -1,0 +1,160 @@
+
+/* this is how you customize fonts. It starts in Google fonts, 
+you then have to pick a font, download one of them into a ttf file
+from the site and add the file into the packages folder. */
+
+@font-face {
+    font-family: "AnonymousPro";
+    src:  url("anonymousPro-Regular.woff");
+    /* font-display: fallback; */
+} 
+
+
+
+
+
+main {
+    padding-top: 2rem;
+}
+
+.background {
+    background: url("../images/plans-background.jpg") center/cover;
+    filter: grayscale(40%);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+    /* - z-index refers to the depth of a website.
+       - the default z-index is 0 (auto).
+       - you can only change the z-index when the 
+         position is changed.
+       - higher numbers go in front and lower ones go behind */
+}
+
+.plan-section {
+    border: black solid;
+    margin: 1rem 0; 
+    width: 80%;
+    border-left: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-section:hover,
+.plan-section:active {
+    animation: up 1s ease-out forwards;
+    border-color: red;
+    box-shadow: 2px 2px 4px black;
+}
+
+.plan-section a{
+    text-decoration: none;
+    color: black;
+    padding: 2rem;
+    display: block;
+}
+
+.plan-section h1{
+    font-size: 1.25rem;
+}
+
+.plan-section h2{
+    text-decoration: none;
+    color: rgb(99, 96, 96);
+    font-size: 1.125rem;
+}
+
+.plan-section p{
+    /* font-family: 'AnonymousPro', sans-serif; */
+    /* font-size: 1.2rem; */
+    /* font-weight: 700; */
+    text-decoration: none;
+    color: black;
+    border: black solid 1px;
+    background: white;
+    padding: 1rem;
+    /* font: status-bar; */
+    font: 700 1.2rem 'AnonymousPro', sans-serif;
+    /* font: font-style font-variant font-weight font-size/line-height font-family */
+}
+
+.clearfix {
+     /* You use this when you use float 
+        You don't want to use this that often because of flexbox
+        You need to add a div tag in the html file with this class.
+        The div tag goes after whatever your trying to float */
+    clear: both;
+}
+
+.plus {
+    background: rgb(67, 204, 140, 0.7);
+    /* The fourth number represents the opacity */
+    z-index: 0;
+}
+
+#plus-badge {
+    position: absolute;
+    /* When using position: absolute you 
+       need to add "position: relative;" to the element that this 
+       badge is closely related to. In this case it's
+       plan-section */
+    top: 0;
+    right: 0;
+    margin: 0;
+    font-size: .75rem;
+    color: white;
+    background: #ff5454;
+    padding: 0.5rem;
+    z-index: 10;
+    transform: rotate(45deg) translate(3.5rem, -1rem);
+    transform-origin: center;
+    width: 12rem;
+    text-align: center;
+}
+
+.free {
+    background: rgb(187, 248, 218, 0.7);
+    float: right;
+    border-right: none;
+    border-left:  solid black;
+    text-align: right;
+}
+
+.premium {
+    background: rgb(14, 78, 54, 0.7);
+}
+
+.premium h1 {
+    color: white;
+}
+
+.premium h2 {
+    color: rgb(156, 152, 152);
+}
+
+@media (min-width: 40rem) {
+    main {
+        margin: inherit auto;
+        max-width: 1500px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .plan-section {
+        border-left: solid black;
+    }
+
+    .free {
+        border-right: solid black;
+    }
+}
+
+@keyframes up {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-2rem);
+    }
+}
+

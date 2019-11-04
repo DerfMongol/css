@@ -1,0 +1,32 @@
+* {
+    font-family: sans-serif;
+}
+
+h1 {
+    color: gold;
+    font-family: sans-serif;
+}
+
+code {
+    color: red;
+    font-family: monospace;
+}
+
+#second code {
+    color: green;
+}
+
+ol #odd {
+    background-color: white;
+    color: black;
+}
+
+li {
+    background-color: black;
+    color: white;
+}
+
+ol li {
+    background-color: black;
+    color: white;
+}

@@ -1,0 +1,22 @@
+
+
+.box {
+    padding: 100px 5px;
+    border: 5px black solid;
+    margin: 5px;
+    text-align: center;
+    display: inline-block;
+    width: 45%;
+    
+}
+
+.box1 {
+    padding: 150px 5px;
+
+}
+
+.box2:hover {
+    color: red;
+    background: yellow;
+    font-size: 20px;
+}

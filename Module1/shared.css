@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,900');
+@import url('https://fonts.googleapis.com/css?family=Anton');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+
+/* css variables are so good because if you change the color 
+of the variable in root then it will be changed throughout the whole file */
+:root {
+    --dark-green: #0e4f1f;
+    --highlight-color: #ff1b68;
+} 
+
+html{
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box; /*Default case in css*/
+} /*border-box is the width/height with content and border included
+    content-box is the width/height of only the content */
+
+    body { /*Inheritance has a low specifity*/
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+       padding-top: 3.5rem;
+    }
+
+    /*the support query is activated when the 
+    browser supports grid  */
+
+    @supports(display: grid) {   
+        body { 
+            display: grid;
+            grid-template-rows: 3.5rem auto fit-content(8rem);
+            grid-template-areas: "header"
+                                 "main"
+                                 "footer";
+            padding-top: 0;
+            height: 100%;
+        }
+    }
+
+main {
+    /* min-height: calc(100vh - 3.5rem - 8rem);
+    margin-top: 3.5rem; */
+    /* grid-row: 2 / 3; */
+    grid-area: main;
+}
+
+.backdrop {
+    display: none;
+    top: 0;
+    left: 0;
+    position: fixed;
+    opacity: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    /* vmin and vmax are based off the heights and widths of the viewport */
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.2s linear;
+}
+
+.main-header {
+    width: 100%;
+    background: #2ddf5c;
+    position: fixed;
+    top: 0;
+    padding: 0.5rem 1rem;
+    z-index: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    /* needed for older browsers */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* .main-header > div { child selector - only immediate children
+    display: inline-block;
+    vertical-align: middle;
+} */
+
+.toggle-button {
+    width: 3rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+  }
+  
+  .toggle-button:focus {
+    outline: none;
+  }
+  
+  .toggle-button__bar {
+    width: 100%;
+    height: 0.2rem;
+    background: black;
+    display: block;
+    margin: 0.6rem 0;
+  }
+
+
+
+.main-header__brand {
+    color: #0e4f1f;
+    text-decoration: none;
+    font-weight: bold;
+    /* font-size: 1.5rem; */
+    /* width: 20px; */
+}
+
+.main-header__brand img {
+    height: 2.5rem;
+    vertical-align: middle;
+    /* width: 100%; */
+}
+
+.main-nav {
+    display: none;
+}
+
+.main-nav__item a,
+.mobile-nav__item a { /*descendant selector*/
+    text-decoration: none;
+    color: #0e4f1f;
+    font-weight: bold;
+    padding: 0.2rem 0px;
+}
+
+/* Pseudo Classes */
+
+.main-nav__item a:hover, /*when cursor is over class*/
+.main-nav__item a:active {  /*when cursor is clicked and held over class*/
+    color: white;
+    border-bottom: 5px solid white;
+}
+
+.main-nav__item--cta {
+
+    animation: wiggle 400ms 3s 8 ease-out none;
+}
+
+/* Pseudo Elements */
+
+.main-nav__item--cta a,
+.mobile-nav__item--cta a { /*overwrites main nav item a*/
+    color: white;
+    background: var(--highlight-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px; /*Rounds the borders*/
+
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active,
+.mobile-nav__item--cta a:hover,
+.mobile-nav__item--cta a:active {
+    color:  var(--highlight-color);
+    background: white;
+    border: none;
+}
+
+.plan-button {
+    background: var(--dark-green);
+    color: white;
+    font: inherit; /*uses inheritance instead of browser default*/
+    border: 1px solid var(--dark-green);
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer; /*turns mouse pointer to hand */
+}
+
+.plan-button:hover,
+.plan-button:active {
+    background: white;
+    color: var(--dark-green);
+
+}
+
+.plan-button:focus { 
+/* Blue outline when things are selected ( focus ) */
+    outline: none;
+}
+
+.plan-button[disabled] {
+    cursor: not-allowed;
+    border: #a1a1a1;
+    background: #ccc;
+    color: #a1a1a1;
+}
+
+.main-footer {
+    background: black;
+    padding: 2rem;
+    /* margin-top: 3rem; */
+    /* grid-row: 3 / 4; */
+    grid-area: footer;
+}
+
+.main-footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-footer-link {
+    margin: 0.5rem 0;
+}
+
+.main-footer-link a{
+    text-decoration: none;
+    color: white;
+}
+
+.main-footer-link a:hover,
+.main-footer-link a:active {
+    color: #ccc;
+}
+
+@media (min-width: 40rem) {
+
+    .toggle-button {
+        display: none;
+    }
+
+    .main-nav{
+        display: flex;
+        /* display: inline-block;
+        width: calc(100% - 44px);
+        text-align: right;
+        vertical-align: middle; */
+        
+    }
+
+    .main-nav__items {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        
+    }
+
+    .main-nav__item {
+        /* display: inline-block; */
+        margin: 0.4rem 1rem;
+    }
+
+
+    .main-footer-links {
+        /* text-align: center; */
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .main-footer-link {
+        /* display: inline-block; */
+        margin: 0px 1rem;
+    }
+}
+
+.mobile-nav {
+    transform: translateX(-100%);
+    transition: transform 800ms cubic-bezier(0.72, 0, 0.1, 0.99);
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 80%;
+    height: 100vh;
+  }
+  
+  .mobile-nav__items {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+  
+  .mobile-nav__item {
+    margin: 1rem 0;
+  }
+  
+  .mobile-nav__item a {
+    font-size: 1.5rem;
+  }
+
+  
+
+  .open {
+      display: block !important;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+  }
+
+  @keyframes wiggle {
+      0% {
+        transform: rotateZ(0);
+      }
+      50% {
+          transform: rotateZ(-10deg);
+      }
+      100% {
+        transform: rotateZ(10deg);
+      }
+  }
+
